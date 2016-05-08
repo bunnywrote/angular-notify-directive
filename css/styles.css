@@ -1,0 +1,47 @@
+.notification{
+    background: royalblue;
+    color: white;
+    min-height: 100px; 
+    min-width: 100px; 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification span {
+    cursor: pointer;
+}
+
+.popup-hint {
+    min-width: 250px;
+    min-height: 100px;
+    background: #b0e0e6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 25px 0 0 50px;
+    border-radius: 5px;
+}
+
+.hint-close {
+    position: absolute;
+    right: 0;
+    font-size: 0.6em;
+    margin: 5px;
+    color: red;
+}
+
+.popup-hint:before {
+    content: " ";
+    border-style: solid;
+    border-width: 10px 15px 10px 15px;
+    border-color: transparent transparent #b0e0e6 transparent;
+    position: absolute;
+    left: 45px;
+    top: -20px;
+}
+
+h4 {
+    align-self: center;
+}
