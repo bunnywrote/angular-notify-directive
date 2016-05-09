@@ -15,7 +15,7 @@ return {
         scope.toggle = function () {
             changeNotificationState(webNotification.permissionGranted);
         }
-        
+               
         function setScope() {
             scope.isEnabled = isEnabled;
             
@@ -42,9 +42,10 @@ return {
                 //show popup
                 //alert("show popup");
                 scope.hint = true;
+                console.log(scope.hint);
             }    
         }
-        
+
         function showNotification() {
             setInterval(function () {
                 if(isEnabled)
@@ -71,6 +72,25 @@ return {
 
         };
     },
-    template: "<div class='notification' ng-click='toggle()'> <span ng-show='isEnabled' class='notify-on' title='notify off'></span> <span ng-show='!isEnabled' class='notify-off' title='notify off'></span> <div class='popup-hint' ng-show='hint'><span class='glyphicon glyphicon-remove-circle hint-close'></span><h4>Allow send notification</h4></div> </div>"
+    template: "<div class='notification' ng-click='toggle()'> <span ng-show='isEnabled' class='notify-on' title='notify off'></span> <span ng-show='!isEnabled' class='notify-off' title='notify off'></span> <notify-hint hint='hint'></notify-hint></div>"
+};
+}]);
+
+app.directive('notifyHint', [function () {
+    return {
+    restrict: 'E',
+    scope: {
+        hint: '='
+    },
+    link: function (scope, element) {
+        
+        element.on('click', function onClick() {
+            console.log('hide');
+            scope.hint = false; 
+            console.log(scope.hint);            
+        });
+
+    },
+    template: "<div class='popup-hint' ng-show='hint' ><span ng-click='hideHint()' class='glyphicon glyphicon-remove-circle hint-close'></span><h4>Allow send notification</h4></div>"
 };
 }]);
